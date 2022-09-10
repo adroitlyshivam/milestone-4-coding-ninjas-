@@ -1,0 +1,18 @@
+ 
+int getHeight(TreeNode<int>* root) {
+     if (!root)
+        return 0;
+    //leaf node
+    if (root->children.size() == 0) {
+        return 1;
+    }
+
+    int max_child_height = -1;
+    //height=1+max(subtree heights)
+    //subtree heights found recursively
+    for (int i = 0; i < root->children.size(); i++) {
+        max_child_height = max(max_child_height,getHeight(root->children[i]));
+    }
+    return 1 + max_child_height;
+
+}
